@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi.c                                             :+:      :+:    :+:   */
+/*   tab.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/19 14:39:07 by spoliart          #+#    #+#             */
-/*   Updated: 2020/09/19 18:03:52 by spoliart         ###   ########.fr       */
+/*   Created: 2020/09/19 15:21:34 by spoliart          #+#    #+#             */
+/*   Updated: 2020/09/19 15:35:07 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	**ft_atoi(char *str)
-{
-	int i;
-	int j;
-	int **tab;
-
-	i = 0;
-	j = 0;
-	while (str[i])
-	{
-		j = 0;
-		while (j < 4)
-		{
-			tab[i][j] = str[i] - '0';
-			j++;
-		}
-		i += 2;
-	}
-	return (tab);
-}
-
+#include <stdlib.h>
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
+	int i;
 	int **tab;
-	tab = ft_atoi(argv);
+
+	i = -1;
+	tab = (int **)malloc(sizeof(*tab) * 4);
+	while (++i < 4)
+		tab[i] = (int *)malloc(sizeof(tab) * 4);
+	return (0);
 }
