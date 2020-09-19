@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/19 14:39:07 by spoliart          #+#    #+#             */
-/*   Updated: 2020/09/19 20:06:09 by spoliart         ###   ########.fr       */
+/*   Updated: 2020/09/19 21:36:43 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,58 +14,45 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void	ft_atoi(char *str, int ***tab)
+int	main(int argc, char **argv)
 {
+	char **tab_arg;
+	char **tab_res;
 	int i;
 	int j;
-
-	i = 0;
-	while (str[i])
-	{
-		j = 0;
-		while (j < 4)
-		{
-			*tab[i][j] = str[i] - '0';
-			j++;
-		}
-		i += 2;
-	}
-}
-
-int		main(int argc, char **argv)
-{
-	int **tab_arg;
-	int i;
-	int j;
+	int k;
 
 	if (argc != 2)
 		return (0);
-	i = -1;
-	tab_arg = (int **)malloc(4 * sizeof(int *));
-	while (++i < 4)
-	{
-		tab_arg[i] = (int *)malloc(4 * sizeof(int));
-	}
-	ft_atoi(*argv, &tab_arg);
 	i = 0;
-	j = 0;
+	tab_arg = (char **)malloc(4 * sizeof(char *));
+	tab_res = (char **)malloc(4 * sizeof(char *));
 	while (i < 4)
 	{
-		j = 0;
-		while (j < 4)
-		{
-			tab_arg[i][j] = 0;
-			j++;
-		}
+		tab_arg[i] = (char *)malloc(4 * sizeof(char));
+		tab_res[i] = (char *)malloc(4 * sizeof(char));
 		i++;
 	}
 	i = 0;
+	k = 0;
 	while (i < 4)
 	{
 		j = 0;
 		while (j < 4)
 		{
-			write(1, &tab_arg[i][j], 1);
+			tab_arg[i][j] = argv[1][k];
+			j++;
+			k += 2;
+		}
+		i++;
+	} 
+	i = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			write(1, &tab_arg[i][j] , 1);
 			j++;
 		}
 		write(1, "\n", 1);
