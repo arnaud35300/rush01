@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/19 13:33:52 by spoliart          #+#    #+#             */
-/*   Updated: 2020/09/19 13:59:11 by spoliart         ###   ########.fr       */
+/*   Updated: 2020/09/19 14:10:15 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int	verif_arg(char *str)
 			return (0);
 		i += 2;
 	}
+	i = 0;
+	while (str[i])
+		i++;
 	if (i != 31)
 		return (0);
 	return (1);
