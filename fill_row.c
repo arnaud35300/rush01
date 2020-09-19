@@ -6,65 +6,76 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/19 18:10:16 by spoliart          #+#    #+#             */
-/*   Updated: 2020/09/19 19:31:04 by spoliart         ###   ########.fr       */
+/*   Updated: 2020/09/20 00:03:21 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush.h"
+#include <unistd.h>
 
-int		**ft(int ***board, int *row, int a, int b, int c);
+int		tab_is_ok(char **tabi, char **tab_arg);
 
-int		row_ok(int **board, int row);
+void	ft(char ***board, int *row, char a, char b, char **tab_arg);
 
-void	fill_row(int **board, int row)
+int		row_ok(char **board, int row);
+
+char	**fill_row(char **board, int row, char **tab_arg)
 {
-	int a;
-	int b;
-	int c;
-	int d;
+	char a;
+	char b;
+	char c;
+	char d;
 
-	if (row == 4)
+	if (row >= 4)
 	{
-		if (visu_ok(board))
-			print(board);
-		return ;
+		if (tab_is_ok(board, tab_arg))
+		{
+			write(1, "nique", 5);
+			return (board);
+		}
+		else
+			write(1, "Error\n", 6);
+		return (board);
 	}
-	a = 0;
-	while (++a <= 4)
+	a = '0';
+	while (++a <= '4')
 	{
 		board[row][0] = a;
-		b = 0;
-		ft(board, row, a, b, c, d);
+		b = '0';
+		ft(&board, &row, a, b, tab_arg);
 	}
+	return (board);
 }
 
-int		**ft(int ***board, int *row, int a, int b, int c)
+void	ft(char ***board, int *row, char a, char b, char **tab_arg)
 {
-	while (++b <= 4)
+	char d;
+	char c;
+
+	while (++b <= '4')
 	{
 		if (a == b)
-			continue;
-		*board[row][1] = b;
-		c = 0;
-		while (++c <= 4)
+			continue ;
+		*board[*row][1] = b;
+		c = '0';
+		while (++c <= '4')
 		{
 			if (a == c || b == c)
-				continue;
-			*board[row][2] = c;
-			d = 0;
-			while (++d <= 4)
+				continue ;
+			*board[*row][2] = c;
+			d = '0';
+			while (++d <= '4')
 			{
 				if (a == d || b == d || c == d)
-					continue;
-				*board[row][3] = d;
-				if (row_ok(board, row))
-					fill_row(board, row + 1);
+					continue ;
+				*board[*row][3] = d;
+				if (row_ok(*board, *row))
+					fill_row(*board, *row + 1, tab_arg);
 			}
 		}
 	}
 }
 
-int		row_ok(int **board, int row)
+int		row_ok(char **board, int row)
 {
 	int i;
 	int col;
