@@ -1,0 +1,10 @@
+atoi
+verif only nbr and 1 to 4 separate by space
+31 char
+
+
+
+backtracking + 1
+si nb == 4 back encore + 1..
+1 seule fois par ligne et colonne le meme nbr
+
