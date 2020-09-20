@@ -14,7 +14,7 @@
 
 int		tab_is_ok(char **tab, char **tab_arg);
 
-void	ft(char ***board, int row, char a, char b);
+void	ft(char **board, int row, char a, char b);
 
 int		row_ok(char **board, int row);
 
@@ -34,7 +34,7 @@ void	ft_print(char **tab)
 	write(1, "\n", 1);
 }
 
-char	**fill_row(char **board, int row, char **tab_arg)
+void	fill_row(char **board, int row, char **tab_arg)
 {
 	char a;
 	char b;
@@ -42,12 +42,10 @@ char	**fill_row(char **board, int row, char **tab_arg)
 	if (row >= 4)
 	{
 		if (tab_is_ok(board, tab_arg))
-		{
-			return (board);
-		}
+			ft_print(board);
 		else
 			write(1, "Error\n", 6);
-		return (0);
+		return ;
 	}
 	a = '0';
 	while (++a <= '4')
@@ -55,14 +53,12 @@ char	**fill_row(char **board, int row, char **tab_arg)
 		ft_print(board);
 		board[row][0] = a;
 		b = '0';
-		ft(&board, row, a, b);
-		if (row_ok(board, row))
-			fill_row(board, row + 1, tab_arg);
+		ft(board, row, a, b);
 	}
-	return (0);
+	return ;
 }
 
-void	ft(char ***board, int row, char a, char b)
+void	ft(char **board, int row, char a, char b)
 {
 	char d;
 	char c;
@@ -71,19 +67,21 @@ void	ft(char ***board, int row, char a, char b)
 	{
 		if (a == b)
 			continue ;
-		*board[row][1] = b;
+		board[row][1] = b;
 		c = '0';
 		while (++c <= '4')
 		{
 			if (a == c || b == c)
 				continue ;
-			*board[row][2] = c;
+			board[row][2] = c;
 			d = '0';
 			while (++d <= '4')
 			{
 				if (a == d || b == d || c == d)
 					continue ;
-				*board[row][3] = d;
+				board[row][3] = d;
+				if (row_ok(board, row))
+					fill_row(board, row + 1, tab_arg);
 			}
 		}
 	}
@@ -96,7 +94,10 @@ int		row_ok(char **board, int row)
 
 	i = -1;
 	col = -1;
+	if (row == 0)
+		return (0);
 	while (++col <= 4)
+		i = -1;
 		while (++i < row)
 			if (board[i][col] == board[row][col])
 				return (0);
