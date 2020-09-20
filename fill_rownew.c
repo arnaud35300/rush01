@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/19 18:10:16 by spoliart          #+#    #+#             */
-/*   Updated: 2020/09/20 17:35:37 by agbosch          ###   ########.fr       */
+/*   Updated: 2020/09/20 17:36:48 by agbosch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,11 @@ int		row_ok(char **board, int row)
 
 	col = -1;
 	while (++col < 4)
+	{
 		i = -1;
 		while (++i < row)
 			if (board[i][col] == board[row][col])
 				return (0);
+	}
 	return (1);
 }
