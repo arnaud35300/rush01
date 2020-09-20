@@ -6,7 +6,7 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/19 14:39:07 by spoliart          #+#    #+#             */
-/*   Updated: 2020/09/20 00:03:42 by spoliart         ###   ########.fr       */
+/*   Updated: 2020/09/20 13:49:11 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int		verif_arg(char *str);
 void	ft_create_tab(char ***tab_res, char ***tab_arg)
 {
 	int i;
-	int j;
-	int k;
 
 	i = -1;
 	*tab_arg = (char **)malloc(4 * sizeof(char *));
@@ -61,7 +59,10 @@ int		main(int argc, char **argv)
 	char **tab_res;
 
 	if (argc != 2)
+	{
+		write(1, "Error\n", 6);
 		return (0);
+	}
 	if (!(verif_arg(argv[1])))
 	{
 		write(1, "Error\n", 6);
