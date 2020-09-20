@@ -6,34 +6,36 @@
 /*   By: spoliart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/19 14:39:07 by spoliart          #+#    #+#             */
-/*   Updated: 2020/09/20 13:49:11 by spoliart         ###   ########.fr       */
+/*   Updated: 2020/09/20 17:00:03 by agbosch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 
-char	**fill_row(char **board, int row, char **tab_arg);
+char	**fill_row2(char **board, int row, char **tab_arg);
 
 int		tab_is_ok(char **tab_res, char **tab_arg);
 
 int		verif_arg(char *str);
+
+
 
 void	ft_create_tab(char ***tab_res, char ***tab_arg)
 {
 	int i;
 
 	i = -1;
-	*tab_arg = (char **)malloc(4 * sizeof(char *));
-	*tab_res = (char **)malloc(4 * sizeof(char *));
+	*tab_arg = (char **)malloc(sizeof(char *) * 4);
+	*tab_res = (char **)malloc(sizeof(char *) * 4);
 	while (++i < 4)
 	{
-		(*tab_arg)[i] = (char *)malloc(4 * sizeof(char));
-		(*tab_res)[i] = (char *)malloc(4 * sizeof(char));
+		(*tab_arg)[i] = (char *)malloc(sizeof(char) * 4);
+		(*tab_res)[i] = (char *)malloc(sizeof(char) * 4);
 	}
 }
 
-char	**ft_fill_tab(char **tab_arg, char **argv)
+char	**ft_fill_tab(char **tab, char **argv)
 {
 	int i;
 	int j;
@@ -46,11 +48,11 @@ char	**ft_fill_tab(char **tab_arg, char **argv)
 		j = -1;
 		while (++j < 4)
 		{
-			tab_arg[i][j] = argv[1][k];
+			tab[i][j] = argv[1][k];
 			k += 2;
 		}
 	}
-	return (tab_arg);
+	return (tab);
 }
 
 int		main(int argc, char **argv)
@@ -70,10 +72,10 @@ int		main(int argc, char **argv)
 	}
 	ft_create_tab(&tab_res, &tab_arg);
 	tab_arg = ft_fill_tab(tab_arg, argv);
-	if (!(tab_res = fill_row(tab_res, 0, tab_arg)))
+	write(1, "yes", 3);
+	if (tab_res == fill_row2(tab_res, 0, tab_arg))
 	{
-		write(1, "Error\n", 6);
-		return (0);
+		write(1, "yes", 3);
 	}
 	free(tab_res);
 	free(tab_arg);

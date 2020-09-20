@@ -6,7 +6,7 @@
 /*   By: mvoltair <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/19 17:16:41 by mvoltair          #+#    #+#             */
-/*   Updated: 2020/09/19 23:51:52 by spoliart         ###   ########.fr       */
+/*   Updated: 2020/09/20 16:36:35 by agbosch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	vis_row_left(char **tab, int col)
 		{
 			max_so_far = tab[col][i];
 			vis_so_far += 1;
-			i++;
 		}
+		i++;
 	}
 	return (vis_so_far);
 }
@@ -46,8 +46,8 @@ int	vis_row_right(char **tab, int col)
 		{
 			max_so_far = tab[col][i];
 			vis_so_far += 1;
-			i--;
 		}
+		i--;
 	}
 	return (vis_so_far);
 }
@@ -67,8 +67,8 @@ int	vis_col_up(char **tab, int row)
 		{
 			max_so_far = tab[i][row];
 			vis_so_far += 1;
-			i++;
 		}
+		i++;
 	}
 	return (vis_so_far);
 }
@@ -88,8 +88,8 @@ int	vis_col_down(char **tab, int row)
 		{
 			max_so_far = tab[i][row];
 			vis_so_far += 1;
-			i--;
 		}
+		i--;
 	}
 	return (vis_so_far);
 }
