@@ -97,7 +97,7 @@ int		row_ok(char **board, int row)
 	i = -1;
 	col = -1;
 	while (++col <= 4)
-		while (++i <= row)
+		while (++i < row)
 			if (board[i][col] == board[row][col])
 				return (0);
 	return (1);
