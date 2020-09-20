@@ -19,25 +19,6 @@ int		tab_is_ok(char **tab_res, char **tab_arg);
 
 int		verif_arg(char *str);
 
-void	ft_print(char **tab)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 4)
-		{
-			write(1, &tab[i][j], 1);
-			j++;
-		}
-		write(1, "\n", 1);
-		i++;
-	}
-}
-
 void	ft_create_tab(char ***tab_res, char ***tab_arg)
 {
 	int i;
@@ -93,7 +74,6 @@ int		main(int argc, char **argv)
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	ft_print(tab_res);
 	free(tab_res);
 	free(tab_arg);
 	return (0);
