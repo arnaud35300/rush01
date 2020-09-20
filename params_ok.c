@@ -13,11 +13,11 @@
 int	vis_row_left(char **tab, int col)
 {
 	int i;
-	int max_so_far;
+	char max_so_far;
 	int vis_so_far;
 
 	i = 0;
-	max_so_far = 0;
+	max_so_far = '0';
 	vis_so_far = 0;
 	while (i < 4)
 	{
@@ -34,11 +34,11 @@ int	vis_row_left(char **tab, int col)
 int	vis_row_right(char **tab, int col)
 {
 	int i;
-	int max_so_far;
+	char max_so_far;
 	int vis_so_far;
 
 	i = 3;
-	max_so_far = 0;
+	max_so_far = '0';
 	vis_so_far = 0;
 	while (i >= 0)
 	{
@@ -55,11 +55,11 @@ int	vis_row_right(char **tab, int col)
 int	vis_col_up(char **tab, int row)
 {
 	int i;
-	int max_so_far;
+	char max_so_far;
 	int vis_so_far;
 
 	i = 0;
-	max_so_far = 0;
+	max_so_far = '0';
 	vis_so_far = 0;
 	while (i < 4)
 	{
@@ -76,11 +76,11 @@ int	vis_col_up(char **tab, int row)
 int	vis_col_down(char **tab, int row)
 {
 	int i;
-	int max_so_far;
+	char max_so_far;
 	int vis_so_far;
 
-	i = 0;
-	max_so_far = 0;
+	i = 3;
+	max_so_far = '0';
 	vis_so_far = 0;
 	while (i >= 0)
 	{
@@ -88,6 +88,7 @@ int	vis_col_down(char **tab, int row)
 		{
 			max_so_far = tab[i][row];
 			vis_so_far += 1;
+			i--;
 		}
 	}
 	return (vis_so_far);
